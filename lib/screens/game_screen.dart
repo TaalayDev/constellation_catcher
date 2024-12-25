@@ -238,7 +238,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
 
   double _getStarRadius(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return size.shortestSide * 0.006;
+    return (size.shortestSide * 0.006).clamp(6.0, 8.0);
   }
 
   EdgeInsets _getResponsivePadding(BuildContext context) {
@@ -552,29 +552,31 @@ class _GameScreenState extends ConsumerState<GameScreen>
             Positioned(
               top: 60,
               right: 16,
-              child: Column(
-                children: [
-                  _buildPowerUpButton(
-                    icon: Icons.ac_unit,
-                    available: _hasTimeFreeze,
-                    onTap: _activateTimeFreeze,
-                    tooltip: 'Freeze Time (5s)',
-                  ),
-                  const SizedBox(height: 8),
-                  _buildPowerUpButton(
-                    icon: Icons.visibility,
-                    available: _hasStarReveal,
-                    onTap: _activateStarReveal,
-                    tooltip: 'Reveal Path (3s)',
-                  ),
-                  const SizedBox(height: 8),
-                  _buildPowerUpButton(
-                    icon: Icons.clear_all,
-                    available: _hasPathClear,
-                    onTap: _activatePathClear,
-                    tooltip: 'Clear Decoys (2s)',
-                  ),
-                ],
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    _buildPowerUpButton(
+                      icon: Icons.ac_unit,
+                      available: _hasTimeFreeze,
+                      onTap: _activateTimeFreeze,
+                      tooltip: 'Freeze Time (5s)',
+                    ),
+                    const SizedBox(height: 8),
+                    _buildPowerUpButton(
+                      icon: Icons.visibility,
+                      available: _hasStarReveal,
+                      onTap: _activateStarReveal,
+                      tooltip: 'Reveal Path (3s)',
+                    ),
+                    const SizedBox(height: 8),
+                    _buildPowerUpButton(
+                      icon: Icons.clear_all,
+                      available: _hasPathClear,
+                      onTap: _activatePathClear,
+                      tooltip: 'Clear Decoys (2s)',
+                    ),
+                  ],
+                ),
               ),
             ),
 

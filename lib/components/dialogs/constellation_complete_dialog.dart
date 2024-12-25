@@ -74,6 +74,9 @@ class _ConstellationCompletionDialogState
   }
 
   Widget _buildHeader() {
+    final size = MediaQuery.of(context).size;
+    final isPhone = size.width < 600;
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -109,15 +112,29 @@ class _ConstellationCompletionDialogState
               ],
             ),
           ),
-          _buildScoreCard('Score', widget.score.toString()),
-          const SizedBox(width: 16),
-          _buildScoreCard(
-            'Time',
-            '${widget.timeTaken.inMinutes}:${(widget.timeTaken.inSeconds % 60).toString().padLeft(2, '0')}',
-          ),
+          if (isPhone)
+            Column(
+              spacing: 16,
+              children: _scoreCards(),
+            )
+          else
+            Row(
+              spacing: 16,
+              children: _scoreCards(),
+            )
         ],
       ),
     );
+  }
+
+  List<Widget> _scoreCards() {
+    return [
+      _buildScoreCard('Score', widget.score.toString()),
+      _buildScoreCard(
+        'Time',
+        '${widget.timeTaken.inMinutes}:${(widget.timeTaken.inSeconds % 60).toString().padLeft(2, '0')}',
+      ),
+    ];
   }
 
   Widget _buildScoreCard(String label, String value) {
@@ -206,12 +223,14 @@ class _ConstellationCompletionDialogState
   }
 
   Widget _buildInfoGrid() {
+    final size = MediaQuery.of(context).size;
+    final isPhone = size.width < 600;
     return GridView.count(
-      crossAxisCount: 2,
+      crossAxisCount: isPhone ? 1 : 2,
       shrinkWrap: true,
       mainAxisSpacing: 16,
       crossAxisSpacing: 16,
-      childAspectRatio: 2,
+      childAspectRatio: isPhone ? 10 / 3 : 2.0,
       physics: const NeverScrollableScrollPhysics(),
       children: [
         _buildInfoCard(
