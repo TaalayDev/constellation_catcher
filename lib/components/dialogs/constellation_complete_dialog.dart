@@ -566,22 +566,26 @@ class _ConstellationCompletionDialogState
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Icon(
-                Icons.swipe,
-                color: Colors.white.withOpacity(0.5),
-                size: 20,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                'Swipe or tap tabs to learn more',
-                style: TextStyle(
+          Expanded(
+            child: Row(
+              children: [
+                Icon(
+                  Icons.swipe,
                   color: Colors.white.withOpacity(0.5),
-                  fontSize: 14,
+                  size: 20,
                 ),
-              ),
-            ],
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Swipe or tap tabs to learn more',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.5),
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           TextButton(
             onPressed: widget.onContinue,

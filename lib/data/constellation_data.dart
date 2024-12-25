@@ -30,6 +30,36 @@ class ConstellationInfo {
     required this.historicalBackground,
     required this.observationTips,
   });
+
+  ConstellationInfo copyWith({
+    String? name,
+    String? mythology,
+    String? bestViewing,
+    String? brightestStar,
+    String? magnitude,
+    String? distance,
+    List<String>? funFacts,
+    String? visibleFrom,
+    List<CulturalSignificance>? culturalSignificance,
+    List<StarInfo>? mainStars,
+    String? historicalBackground,
+    List<String>? observationTips,
+  }) {
+    return ConstellationInfo(
+      name: name ?? this.name,
+      mythology: mythology ?? this.mythology,
+      bestViewing: bestViewing ?? this.bestViewing,
+      brightestStar: brightestStar ?? this.brightestStar,
+      magnitude: magnitude ?? this.magnitude,
+      distance: distance ?? this.distance,
+      funFacts: funFacts ?? this.funFacts,
+      visibleFrom: visibleFrom ?? this.visibleFrom,
+      culturalSignificance: culturalSignificance ?? this.culturalSignificance,
+      mainStars: mainStars ?? this.mainStars,
+      historicalBackground: historicalBackground ?? this.historicalBackground,
+      observationTips: observationTips ?? this.observationTips,
+    );
+  }
 }
 
 class CulturalSignificance {

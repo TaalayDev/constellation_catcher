@@ -65,7 +65,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
 
   void _startFallingStarsTimer() {
     _fallingStarTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
-      _addFallingStar();
+      if (_fallingStars.isEmpty) _addFallingStar();
     });
   }
 
@@ -422,6 +422,7 @@ class MenuStarWidget extends StatefulWidget {
 class _MenuStarWidgetState extends State<MenuStarWidget>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
+  late final Tween<double> _tween;
 
   @override
   void initState() {
@@ -432,6 +433,7 @@ class _MenuStarWidgetState extends State<MenuStarWidget>
       ),
       vsync: this,
     )..repeat(reverse: true);
+    _tween = Tween(begin: 0.3, end: 1.0);
   }
 
   @override
@@ -449,7 +451,7 @@ class _MenuStarWidgetState extends State<MenuStarWidget>
       left: widget.star.position.dx * widget.constraints.maxWidth,
       top: widget.star.position.dy * widget.constraints.maxHeight,
       child: FadeTransition(
-        opacity: Tween(begin: 0.3, end: 1.0).animate(_controller),
+        opacity: _tween.animate(_controller),
         child: Container(
           width: starSize,
           height: starSize,

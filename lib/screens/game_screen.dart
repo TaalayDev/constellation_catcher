@@ -13,6 +13,10 @@ import '../models/constellation_level.dart';
 import '../provider/database_provider.dart';
 import '../data/local_storage.dart';
 
+Offset _calculateStarPosition(Offset position, Size size) {
+  return Offset(position.dx * size.width, position.dy * size.height);
+}
+
 class GameScreen extends StatefulHookConsumerWidget {
   const GameScreen({
     super.key,
@@ -507,6 +511,13 @@ class _GameScreenState extends ConsumerState<GameScreen>
     await db.updateAchievementProgress('Constellation Master', 1);
   }
 
+  Size _getPainterSize(BuildContext context) {
+    final padding = _getResponsivePadding(context);
+    final width = MediaQuery.of(context).size.width - padding.horizontal;
+    final height = MediaQuery.of(context).size.height - padding.vertical;
+    return Size(width, height);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -521,29 +532,39 @@ class _GameScreenState extends ConsumerState<GameScreen>
                 starRadius: _getStarRadius(context),
               ),
             ),
-            GestureDetector(
-              onPanStart: _handleDragStart,
-              onPanUpdate: _handleDragUpdate,
-              onPanEnd: _handleDragEnd,
-              child: Center(
-                child: CustomPaint(
-                  size: MediaQuery.of(context).size,
-                  painter: AdaptiveConstellationPainter(
-                    constellation: level.starPositions,
-                    connections: level.connections,
-                    currentIndex: _currentStarIndex,
-                    completedIndices: _completedIndices,
-                    currentDragPosition: _currentDragPosition,
-                    showHint: _showHint,
-                    hintAnimation: _hintController,
-                    isComplete: _levelComplete,
-                    starRadius: _getStarRadius(context),
-                    lineWidth: MediaQuery.of(context).size.width * 0.004,
-                    isClosedLoop: _isClosedLoop,
-                    playerConnections: _playerConnections,
+            Center(
+              child: LayoutBuilder(builder: (context, constraints) {
+                final isWideScreen = constraints.maxWidth > 600;
+                final size = Size(
+                  constraints.maxWidth,
+                  !isWideScreen
+                      ? constraints.maxHeight * 0.6
+                      : constraints.maxHeight,
+                );
+
+                return GestureDetector(
+                  onPanStart: (details) => _handleDragStart(details, size),
+                  onPanUpdate: (details) => _handleDragUpdate(details, size),
+                  onPanEnd: _handleDragEnd,
+                  child: CustomPaint(
+                    size: size,
+                    painter: AdaptiveConstellationPainter(
+                      constellation: level.starPositions,
+                      connections: level.connections,
+                      currentIndex: _currentStarIndex,
+                      completedIndices: _completedIndices,
+                      currentDragPosition: _currentDragPosition,
+                      showHint: _showHint,
+                      hintAnimation: _hintController,
+                      isComplete: _levelComplete,
+                      starRadius: _getStarRadius(context),
+                      lineWidth: MediaQuery.of(context).size.width * 0.004,
+                      isClosedLoop: _isClosedLoop,
+                      playerConnections: _playerConnections,
+                    ),
                   ),
-                ),
-              ),
+                );
+              }),
             ),
 
             _buildGameUI(context),
@@ -601,18 +622,14 @@ class _GameScreenState extends ConsumerState<GameScreen>
     );
   }
 
-  void _handleDragStart(DragStartDetails details) {
+  void _handleDragStart(DragStartDetails details, Size screenSize) {
     if (_levelComplete) return;
 
-    final screenSize = MediaQuery.of(context).size;
     final starRadius = _getStarRadius(context);
 
     for (int i = 0; i < level.starPositions.length; i++) {
       final starPos = level.starPositions[i];
-      final targetPixelPosition = Offset(
-        starPos.dx * screenSize.width,
-        starPos.dy * screenSize.height,
-      );
+      final targetPixelPosition = _calculateStarPosition(starPos, screenSize);
 
       if ((targetPixelPosition - details.localPosition).distance < starRadius) {
         setState(() {
@@ -626,24 +643,20 @@ class _GameScreenState extends ConsumerState<GameScreen>
     }
   }
 
-  void _handleDragUpdate(DragUpdateDetails details) {
+  void _handleDragUpdate(DragUpdateDetails details, Size screenSize) {
     if (!_isDragging || _levelComplete) return;
 
     setState(() {
       _currentDragPosition = details.localPosition;
     });
 
-    final screenSize = MediaQuery.of(context).size;
     final starRadius = _getStarRadius(context);
 
     for (int i = 0; i < level.starPositions.length; i++) {
       if (i == _currentStarIndex) continue;
 
       final targetPos = level.starPositions[i];
-      final targetPixelPosition = Offset(
-        targetPos.dx * screenSize.width,
-        targetPos.dy * screenSize.height,
-      );
+      final targetPixelPosition = _calculateStarPosition(targetPos, screenSize);
 
       if ((targetPixelPosition - details.localPosition).distance < starRadius) {
         _playerConnections.add([_currentStarIndex, i]);
@@ -725,39 +738,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
     });
 
     HapticFeedback.heavyImpact();
-
-    if (_mistakes >= 3) {
-      _endGame(completed: false);
-    }
-  }
-
-  void _handleCorrectConnection() {
-    _consecutiveCorrect++;
-    if (_consecutiveCorrect >= 3) {
-      _comboMultiplier = math.min(4, _consecutiveCorrect ~/ 3);
-      _comboController.forward(from: 0);
-    }
-
-    _remainingTime += 2;
-    _score += 100 * _comboMultiplier;
-
-    HapticFeedback.lightImpact();
-
-    if (_completedIndices.length == level.connections.length - 1) {
-      _validatePattern();
-    }
-  }
-
-  void _handleIncorrectConnection() {
-    setState(() {
-      _consecutiveCorrect = 0;
-      _comboMultiplier = 1;
-      _isDragging = false;
-      _currentDragPosition = null;
-    });
-
-    HapticFeedback.heavyImpact();
-    _comboController.forward(from: 0);
 
     if (_mistakes >= 3) {
       _endGame(completed: false);
@@ -876,8 +856,8 @@ class AdaptiveConstellationPainter extends CustomPainter {
         final start = constellation[connection[0]];
         final end = constellation[connection[1]];
         canvas.drawLine(
-          Offset(start.dx * size.width, start.dy * size.height),
-          Offset(end.dx * size.width, end.dy * size.height),
+          _calculateStarPosition(start, size),
+          _calculateStarPosition(end, size),
           hintPaint,
         );
       }
@@ -890,8 +870,8 @@ class AdaptiveConstellationPainter extends CustomPainter {
         final start = constellation[indices[0]];
         final end = constellation[indices[1]];
         canvas.drawLine(
-          Offset(start.dx * size.width, start.dy * size.height),
-          Offset(end.dx * size.width, end.dy * size.height),
+          _calculateStarPosition(start, size),
+          _calculateStarPosition(end, size),
           linePaint,
         );
       }
@@ -913,8 +893,8 @@ class AdaptiveConstellationPainter extends CustomPainter {
       final start = constellation[connection[0]];
       final end = constellation[connection[1]];
       canvas.drawLine(
-        Offset(start.dx * size.width, start.dy * size.height),
-        Offset(end.dx * size.width, end.dy * size.height),
+        _calculateStarPosition(start, size),
+        _calculateStarPosition(end, size),
         linePaint,
       );
     }
@@ -927,7 +907,7 @@ class AdaptiveConstellationPainter extends CustomPainter {
 
       final glowRadius = isActive ? starRadius * 3 : starRadius * 2;
       canvas.drawCircle(
-        Offset(position.dx * size.width, position.dy * size.height),
+        _calculateStarPosition(position, size),
         glowRadius,
         Paint()
           ..color = isActive
@@ -948,7 +928,7 @@ class AdaptiveConstellationPainter extends CustomPainter {
       }
 
       canvas.drawCircle(
-        Offset(position.dx * size.width, position.dy * size.height),
+        _calculateStarPosition(position, size),
         isActive ? starRadius * 1.2 : starRadius,
         starPaint
           ..color = isCompleted || isActive
