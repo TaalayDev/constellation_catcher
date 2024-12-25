@@ -21,7 +21,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
   final List<MenuStar> _stars = [];
 
   final List<FallingStar> _fallingStars = [];
-  late final Timer _fallingStarTimer;
+  Timer? _fallingStarTimer;
 
   @override
   void initState() {
@@ -70,7 +70,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
   }
 
   void _stopFallingStarsTimer() {
-    _fallingStarTimer.cancel();
+    _fallingStarTimer?.cancel();
   }
 
   @override
@@ -78,7 +78,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
     WidgetsBinding.instance.removeObserver(this);
 
     _backgroundController.dispose();
-    _fallingStarTimer.cancel();
+    _fallingStarTimer?.cancel();
     for (var star in _fallingStars) {
       star.controller.dispose();
     }
