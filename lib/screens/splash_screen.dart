@@ -80,17 +80,6 @@ class _SplashScreenState extends State<SplashScreen>
               return TwinklingStar(star: star);
             }),
 
-            // Rotating constellation
-            Center(
-              child: RotationTransition(
-                turns: _rotationController,
-                child: CustomPaint(
-                  size: const Size(200, 200),
-                  painter: ConstellationPainter(),
-                ),
-              ),
-            ),
-
             // Game title with scale animation
             Center(
               child: Column(
@@ -122,6 +111,13 @@ class _SplashScreenState extends State<SplashScreen>
                         color: Colors.white70,
                         letterSpacing: 4,
                       ),
+                    ),
+                  ),
+                  RotationTransition(
+                    turns: _rotationController,
+                    child: CustomPaint(
+                      size: const Size(200, 200),
+                      painter: ConstellationPainter(),
                     ),
                   ),
                 ],

@@ -360,7 +360,218 @@ class ConstellationDataService {
         'Contains many bright stars and nebulae'
       ],
     ),
-    // Add more constellations...
+
+    // New constellations...
+    'Lyra': ConstellationInfo(
+      name: 'Lyra',
+      mythology:
+          'Named after the lyre of Orpheus in Greek mythology, this constellation is associated with the musician and poet.',
+      bestViewing: 'Summer months in Northern Hemisphere',
+      brightestStar: 'Vega (Alpha Lyrae)',
+      magnitude: '0.03',
+      distance: '25 light-years',
+      funFacts: [
+        'Contains the fifth-brightest star in the sky, Vega',
+        'Site of the Ring Nebula (M57), a planetary nebula',
+        'Used for navigation by ancient mariners',
+        'One of the 48 constellations listed by Ptolemy'
+      ],
+      visibleFrom: 'Visible year-round from most of the world',
+      culturalSignificance: [
+        CulturalSignificance(
+            culture: 'Greek',
+            interpretation:
+                'Associated with the lyre of Orpheus, the musician and poet'),
+        CulturalSignificance(
+            culture: 'Native American',
+            interpretation:
+                'Associated with the eagle, a symbol of strength and power')
+      ],
+      mainStars: [
+        StarInfo(
+            name: 'Vega',
+            designation: 'Alpha Lyrae',
+            magnitude: '0.03',
+            distance: '25 light-years',
+            spectralType: 'A0V')
+      ],
+      historicalBackground:
+          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      observationTips: [
+        'Look for the bright star Vega',
+        'Use it to find the Ring Nebula (M57)',
+        'Best viewed during summer evenings',
+        'Contains many bright stars and nebulae'
+      ],
+    ),
+    'Cygnus': ConstellationInfo(
+      name: 'Cygnus',
+      mythology:
+          'Named after the swan in Greek mythology, this constellation is associated with several myths and legends.',
+      bestViewing: 'Summer months in Northern Hemisphere',
+      brightestStar: 'Deneb (Alpha Cygni)',
+      magnitude: '1.25',
+      distance: '1,500 light-years',
+      funFacts: [
+        'Contains the Northern Cross asterism',
+        'Site of the North America Nebula (NGC 7000)',
+        'Used for navigation by ancient mariners',
+        'One of the 48 constellations listed by Ptolemy'
+      ],
+      visibleFrom: 'Visible year-round from most of the world',
+      culturalSignificance: [
+        CulturalSignificance(
+            culture: 'Greek',
+            interpretation:
+                'Associated with the swan Zeus transformed into to seduce Leda'),
+        CulturalSignificance(
+            culture: 'Native American',
+            interpretation:
+                'Associated with the eagle, a symbol of strength and power')
+      ],
+      mainStars: [
+        StarInfo(
+            name: 'Deneb',
+            designation: 'Alpha Cygni',
+            magnitude: '1.25',
+            distance: '1,500 light-years',
+            spectralType: 'A2Ia')
+      ],
+      historicalBackground:
+          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      observationTips: [
+        'Look for the Northern Cross asterism',
+        'Use it to find the North America Nebula (NGC 7000)',
+        'Best viewed during summer evenings',
+        'Contains many bright stars and nebulae'
+      ],
+    ),
+    'Perseus': ConstellationInfo(
+      name: 'Perseus',
+      mythology:
+          'Named after the hero in Greek mythology, this constellation is associated with the slaying of the Gorgon Medusa.',
+      bestViewing: 'Winter months in Northern Hemisphere',
+      brightestStar: 'Mirfak (Alpha Persei)',
+      magnitude: '1.79',
+      distance: '590 light-years',
+      funFacts: [
+        'Contains the famous Double Cluster (NGC 869 and NGC 884)',
+        'Site of the Perseus Cluster of galaxies (Abell 426)',
+        'Used for navigation by ancient mariners',
+        'One of the 48 constellations listed by Ptolemy'
+      ],
+      visibleFrom: 'Visible year-round from most of the world',
+      culturalSignificance: [
+        CulturalSignificance(
+            culture: 'Greek',
+            interpretation:
+                'Associated with the hero Perseus, who slew the Gorgon Medusa'),
+        CulturalSignificance(
+            culture: 'Native American',
+            interpretation:
+                'Associated with the eagle, a symbol of strength and power')
+      ],
+      mainStars: [
+        StarInfo(
+            name: 'Mirfak',
+            designation: 'Alpha Persei',
+            magnitude: '1.79',
+            distance: '590 light-years',
+            spectralType: 'F5Ib')
+      ],
+      historicalBackground:
+          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      observationTips: [
+        'Look for the bright star Mirfak',
+        'Use it to find the Double Cluster (NGC 869 and NGC 884)',
+        'Best viewed during winter evenings',
+        'Contains many bright stars and nebulae'
+      ],
+    ),
+    'Pegasus': ConstellationInfo(
+      name: 'Pegasus',
+      mythology:
+          'Named after the winged horse in Greek mythology, this constellation is associated with several myths and legends.',
+      bestViewing: 'Autumn months in Northern Hemisphere',
+      brightestStar: 'Scheat (Beta Pegasi)',
+      magnitude: '2.42',
+      distance: '196 light-years',
+      funFacts: [
+        'Contains the Great Square of Pegasus asterism',
+        'Site of the Andromeda Galaxy (M31)',
+        'Used for navigation by ancient mariners',
+        'One of the 48 constellations listed by Ptolemy'
+      ],
+      visibleFrom: 'Visible year-round from most of the world',
+      culturalSignificance: [
+        CulturalSignificance(
+            culture: 'Greek',
+            interpretation:
+                'Associated with the winged horse Pegasus, who sprang from the blood of Medusa'),
+        CulturalSignificance(
+            culture: 'Native American',
+            interpretation:
+                'Associated with the eagle, a symbol of strength and power')
+      ],
+      mainStars: [
+        StarInfo(
+            name: 'Scheat',
+            designation: 'Beta Pegasi',
+            magnitude: '2.42',
+            distance: '196 light-years',
+            spectralType: 'M2.5II-III')
+      ],
+      historicalBackground:
+          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      observationTips: [
+        'Look for the Great Square of Pegasus',
+        'Use it to find the Andromeda Galaxy (M31)',
+        'Best viewed during autumn evenings',
+        'Contains many bright stars and nebulae'
+      ],
+    ),
+    'Gemini': ConstellationInfo(
+      name: 'Gemini',
+      mythology:
+          'Named after the twins Castor and Pollux in Greek mythology, this constellation is associated with several myths and legends.',
+      bestViewing: 'Winter months in Northern Hemisphere',
+      brightestStar: 'Pollux (Beta Geminorum)',
+      magnitude: '1.14',
+      distance: '34 light-years',
+      funFacts: [
+        'Contains the famous asterism "The Twins"',
+        'Site of the Eskimo Nebula (NGC 2392)',
+        'Used for navigation by ancient mariners',
+        'One of the 48 constellations listed by Ptolemy'
+      ],
+      visibleFrom: 'Visible year-round from most of the world',
+      culturalSignificance: [
+        CulturalSignificance(
+            culture: 'Greek',
+            interpretation:
+                'Associated with the twins Castor and Pollux, who were placed in the stars after their deaths'),
+        CulturalSignificance(
+            culture: 'Native American',
+            interpretation:
+                'Associated with the eagle, a symbol of strength and power')
+      ],
+      mainStars: [
+        StarInfo(
+            name: 'Pollux',
+            designation: 'Beta Geminorum',
+            magnitude: '1.14',
+            distance: '34 light-years',
+            spectralType: 'K0III')
+      ],
+      historicalBackground:
+          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      observationTips: [
+        'Look for the bright stars Castor and Pollux',
+        'Use them to find the Eskimo Nebula (NGC 2392)',
+        'Best viewed during winter evenings',
+        'Contains many bright stars and nebulae'
+      ],
+    ),
   };
 
   static final List<ConstellationLevel> levels = [
@@ -470,6 +681,212 @@ class ConstellationDataService {
       ],
       isClosedLoop: false,
     ),
+
+    // New levels...
+    ConstellationLevel(
+      name: "Lyra",
+      requiredScore: 1750,
+      starPositions: const [
+        Offset(0.68, 1.07 / 2 - 0.5),
+        Offset(0.55, 1.39 / 2 - 0.5),
+        Offset(0.37, 1.61 / 2 - 0.5),
+        Offset(0.34, 2.39 / 2 - 0.5),
+        Offset(0.52, 2.22 / 2 - 0.5),
+      ],
+      connections: const [
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 4],
+        [4, 1],
+      ],
+      isClosedLoop: false,
+    ),
+
+    ConstellationLevel(
+      name: "Cygnus",
+      requiredScore: 2200,
+      starPositions: const [
+        Offset(0.53, 0.205),
+        Offset(0.61, 0.335),
+        Offset(0.74, 0.49),
+        Offset(0.90, 0.67),
+        Offset(0.93, 0.025),
+        Offset(0.87, 0.07),
+        Offset(0.81, 0.235),
+        Offset(0.45, 0.495),
+        Offset(0.27, 0.555),
+        Offset(0.07, 0.545),
+      ],
+      connections: const [
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [4, 5],
+        [5, 6],
+        [6, 1],
+        [1, 7],
+        [7, 8],
+        [8, 9],
+      ],
+      isClosedLoop: false,
+    ),
+
+    ConstellationLevel(
+      name: "Perseus",
+      requiredScore: 2500,
+      starPositions: const [
+        Offset(0.52, 0),
+        Offset(0.48, 0.06),
+        Offset(0.52, 0.07),
+        Offset(0.41, 0.16),
+        Offset(0.47, 0.165),
+        Offset(0.58, 0.155),
+        Offset(0.67, 0.12),
+        Offset(0.83, 0.05),
+        Offset(0.32, 0.215),
+        Offset(0.20, 0.225),
+        Offset(0.17, 0.2),
+        Offset(0.16, 0.15),
+        Offset(0.22, 0.15),
+        Offset(0.24, 0.405),
+        Offset(0.51, 0.37),
+        Offset(0.53, 0.42),
+        Offset(0.23, 0.515),
+        Offset(0.26, 0.61),
+        Offset(0.32, 0.6),
+      ],
+      connections: const [
+        [0, 1],
+        [1, 3],
+        [3, 8],
+        [8, 9],
+        [9, 10],
+        [10, 11],
+        [11, 12],
+        [0, 2],
+        [2, 4],
+        [4, 5],
+        [5, 6],
+        [6, 7],
+        [4, 3],
+        [8, 13],
+        [4, 14],
+        [14, 15],
+        [14, 13],
+        [13, 16],
+        [16, 17],
+        [17, 18],
+      ],
+      isClosedLoop: false,
+    ),
+
+    ConstellationLevel(
+      name: "Pegasus",
+      requiredScore: 2800,
+      starPositions: const [
+        Offset(0.17, 0.18),
+        Offset(0.46, 0.20),
+        Offset(0.46, 0.45),
+        Offset(0.11, 0.44),
+        Offset(0.55, 0.16),
+        Offset(0.69, 0.09),
+        Offset(0.53, 0.27),
+        Offset(0.55, 0.30),
+        Offset(0.74, 0.25),
+        Offset(0.84, 0.23),
+        Offset(0.55, 0.50),
+        Offset(0.59, 0.53),
+        Offset(0.75, 0.61),
+        Offset(0.89, 0.53),
+      ],
+      connections: const [
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 0],
+        [1, 4],
+        [4, 5],
+        [1, 6],
+        [6, 7],
+        [7, 8],
+        [8, 9],
+        [2, 10],
+        [10, 11],
+        [11, 12],
+        [12, 13],
+      ],
+      isClosedLoop: false,
+    ),
+
+    ConstellationLevel(
+      name: "Gemini",
+      requiredScore: 3000,
+      starPositions: const [
+        Offset(0.27, 0.10),
+        Offset(0.43, 0.15),
+        Offset(0.56, 0.04),
+        Offset(0.33, 0.22),
+        Offset(0.63, 0.30),
+        Offset(0.80, 0.36),
+        Offset(0.87, 0.36),
+        Offset(0.95, 0.32),
+        Offset(0.76, 0.43),
+        Offset(0.18, 0.20),
+        Offset(0.25, 0.24),
+        Offset(0.18, 0.31),
+        Offset(0.36, 0.39),
+        Offset(0.38, 0.55),
+        Offset(0.64, 0.65),
+        Offset(0.49, 0.43),
+        Offset(0.70, 0.54),
+      ],
+      connections: const [
+        [0, 1],
+        [1, 2],
+        [1, 3],
+        [1, 4],
+        [4, 8],
+        [4, 5],
+        [5, 6],
+        [6, 7],
+        [3, 10],
+        [10, 9],
+        [10, 11],
+        [10, 12],
+        [12, 13],
+        [12, 15],
+        [15, 16],
+        [13, 14],
+      ],
+      isClosedLoop: false,
+    ),
+
+    // ConstellationLevel(
+    //   name: 'Gemini',
+    //   requiredScore: 3000,
+    //   starPositions: const [
+    //     Offset(0.40, 0.25), // Castor (Alpha Geminorum)
+    //     Offset(0.45, 0.25), // Pollux (Beta Geminorum)
+    //     Offset(0.35, 0.35), // Gamma Geminorum
+    //     Offset(0.50, 0.35), // Delta Geminorum
+    //     Offset(0.30, 0.45), // Epsilon Geminorum
+    //     Offset(0.55, 0.45), // Zeta Geminorum
+    //     Offset(0.40, 0.55), // Eta Geminorum
+    //     Offset(0.45, 0.55), // Mu Geminorum
+    //   ],
+    //   connections: const [
+    //     [0, 1], // Castor to Pollux
+    //     [0, 2], // Castor to Gamma
+    //     [1, 3], // Pollux to Delta
+    //     [2, 4], // Gamma to Epsilon
+    //     [3, 5], // Delta to Zeta
+    //     [4, 6], // Epsilon to Eta
+    //     [5, 7], // Zeta to Mu
+    //     [6, 7], // Eta to Mu
+    //   ],
+    //   isClosedLoop: false,
+    // ),
   ];
 
   static ConstellationInfo getConstellationInfo(String name) {

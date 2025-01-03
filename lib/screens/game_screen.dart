@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -225,6 +226,14 @@ class _GameScreenState extends ConsumerState<GameScreen>
         ...LocalStorage().completedLevels,
         level.name,
       ];
+      // FirebaseAnalytics.instance.logEvent(
+      //   name: 'level_completed',
+      //   parameters: {
+      //     'level': level.name,
+      //     'score': finalScore,
+      //     'time_taken': GameConfig.lineDrawTimeout.inSeconds - _remainingTime,
+      //   },
+      // );
       _showCompletionDialog();
     }
   }
@@ -588,13 +597,6 @@ class _GameScreenState extends ConsumerState<GameScreen>
                       available: _hasStarReveal,
                       onTap: _activateStarReveal,
                       tooltip: 'Reveal Path (3s)',
-                    ),
-                    const SizedBox(height: 8),
-                    _buildPowerUpButton(
-                      icon: Icons.clear_all,
-                      available: _hasPathClear,
-                      onTap: _activatePathClear,
-                      tooltip: 'Clear Decoys (2s)',
                     ),
                   ],
                 ),

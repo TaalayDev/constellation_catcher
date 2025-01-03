@@ -1,4 +1,4 @@
-package com.example.constellation_catcher
+package io.github.taalaydev.constellation_catcher
 
 import io.flutter.embedding.android.FlutterActivity
 

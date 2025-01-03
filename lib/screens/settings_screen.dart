@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../components/background_gradient.dart';
 import '../config/game_theme.dart';
@@ -317,14 +318,18 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                               'Privacy Policy',
                               Icons.privacy_tip_rounded,
                               () {
-                                // TODO: Implement privacy policy
+                                launchUrl(Uri.parse(
+                                  'https://taalaydev.github.io/files/constellation-provacy-policy.html',
+                                ));
                               },
                             ),
                             _buildButtonTile(
                               'Terms of Service',
                               Icons.description_rounded,
                               () {
-                                // TODO: Implement terms of service
+                                launchUrl(Uri.parse(
+                                  'https://taalaydev.github.io/files/constellation-terms.html',
+                                ));
                               },
                             ),
                           ],

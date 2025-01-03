@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/constellation_editor_screen.dart';
 import '../screens/level_select_screen.dart';
 import '../screens/game_screen.dart';
 import '../screens/menu_screen.dart';
@@ -15,6 +16,7 @@ class AppRouter {
   static const String levelSelect = '/level-select';
   static const String settings = '/settings';
   static const String achievements = '/achievements';
+  static const String constellationEditor = '/editor';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -46,6 +48,10 @@ class AppRouter {
       case achievements:
         return MaterialPageRoute(
           builder: (_) => const AchievementScreen(),
+        );
+      case constellationEditor:
+        return MaterialPageRoute(
+          builder: (_) => const ConstellationEditorScreen(),
         );
       default:
         return MaterialPageRoute(

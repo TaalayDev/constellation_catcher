@@ -14,6 +14,7 @@ Constellation Catcher is an interactive mobile game built with Flutter where pla
 - **Visual Themes**: Multiple visual themes including Classic, Nebula, Aurora, and Deep Space
 - **Progressive Difficulty**: Start with simple patterns and advance to complex constellations
 - **Educational Content**: Learn about real constellations and their mythology
+- **Constellation Editor**: Create and test custom constellation patterns
 
 ## 🎮 Game Mechanics
 
@@ -63,12 +64,14 @@ lib/
 git clone https://github.com/TaalayDev/constellation_catcher.git
 ```
 
-2. Install dependencies:
+2. This project uses Firebase for analytics and crash reporting. To enable Firebase, create a new project on the [Firebase Console](https://console.firebase.google.com/), download the `google-services.json` and `GoogleService-Info.plist` files, and place them in the `android/app` and `ios/Runner` directories, respectively. If you don't want to use Firebase, remove the Firebase dependencies from the `pubspec.yaml` and Firebase initialization code from the `main.dart` file.
+
+3. Install dependencies:
 ```bash
 flutter pub get
 ```
 
-3. Run the app:
+4. Run the app:
 ```bash
 flutter run
 ```
@@ -112,3 +115,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - Constellation mythology sourced from various astronomical databases
 - Flutter and Dart community
+- Packages used in this project

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -224,6 +225,16 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
                     buttonTextSize,
                     isDesktop,
                   ),
+                  if (!kReleaseMode) ...[
+                    SizedBox(height: isDesktop ? 24 : 16),
+                    _buildMenuButton(
+                      'Editor',
+                      Icons.edit_rounded,
+                      () => Navigator.pushNamed(context, '/editor'),
+                      buttonTextSize,
+                      isDesktop,
+                    ),
+                  ],
                 ],
               ),
 
