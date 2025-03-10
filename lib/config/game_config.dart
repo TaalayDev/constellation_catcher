@@ -14,3 +14,6 @@ class GameConfig {
   static const int timeBonus = 50;
   static const int perfectDrawBonus = 25;
 }
+
+// ca-app-pub-5153941317881091~6156142017
+// ca-app-pub-5153941317881091/4277590731

@@ -1,5 +1,5 @@
-import 'dart:async';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -31,10 +31,20 @@ class _AdBannerState extends State<AdBanner> {
     super.dispose();
   }
 
+  String _getAdUnitId() {
+    if (Platform.isAndroid) {
+      return 'ca-app-pub-3940256099942544/6300978111'; // Android test ad unit ID
+    } else if (Platform.isIOS) {
+      return kReleaseMode
+          ? 'ca-app-pub-5153941317881091/5394220493' // 'ca-app-pub-5153941317881091/4277590731'
+          : 'ca-app-pub-3940256099942544/2934735716'; // iOS test ad unit ID
+    } else {
+      throw UnsupportedError('Unsupported platform');
+    }
+  }
+
   void _loadAd() {
-    final adUnitId = Platform.isAndroid
-        ? 'ca-app-pub-3940256099942544/6300978111' // Android test ad unit ID
-        : 'ca-app-pub-3940256099942544/2934735716'; // iOS test ad unit ID
+    final adUnitId = _getAdUnitId();
 
     _bannerAd = BannerAd(
       adUnitId: adUnitId,

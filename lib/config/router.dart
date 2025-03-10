@@ -7,6 +7,7 @@ import '../screens/menu_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/achievments_screen.dart';
+import '../components/ad_wrapper.dart';
 import '../data/local_storage.dart';
 
 class AppRouter {
@@ -26,28 +27,30 @@ class AppRouter {
         );
       case menu:
         return MaterialPageRoute(
-          builder: (_) => const MenuScreen(),
+          builder: (_) => const AdWrapper(child: MenuScreen()),
         );
       case game:
         final args = settings.arguments;
 
         return MaterialPageRoute(
-          builder: (_) => GameScreen(
-            levelIndex: (args as int?) ?? 0,
-            mode: LocalStorage().getString('selectedDifficulty') ?? 'Normal',
+          builder: (_) => AdWrapper(
+            child: GameScreen(
+              levelIndex: (args as int?) ?? 0,
+              mode: LocalStorage().getString('selectedDifficulty') ?? 'Normal',
+            ),
           ),
         );
       case levelSelect:
         return MaterialPageRoute(
-          builder: (_) => const LevelSelectScreen(),
+          builder: (_) => const AdWrapper(child: LevelSelectScreen()),
         );
       case AppRouter.settings:
         return MaterialPageRoute(
-          builder: (_) => const SettingsScreen(),
+          builder: (_) => const AdWrapper(child: SettingsScreen()),
         );
       case achievements:
         return MaterialPageRoute(
-          builder: (_) => const AchievementScreen(),
+          builder: (_) => const AdWrapper(child: AchievementScreen()),
         );
       case constellationEditor:
         return MaterialPageRoute(

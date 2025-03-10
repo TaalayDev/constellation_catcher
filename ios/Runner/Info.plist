@@ -47,5 +47,7 @@
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Constellation Catcher needs access to your microphone to record your voice</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-5153941317881091~6156142017</string>
 </dict>
 </plist>
