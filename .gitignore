@@ -50,3 +50,5 @@ firebase*.json
 google-services.json
 google-services-*
 GoogleService-Info.plist
+
+lib/components/ad_banner.dart

@@ -1,16 +1,18 @@
-// import 'package:firebase_core/firebase_core.dart';
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:constellation_catcher/firebase_options.dart';
 
-import 'data/local_storage.dart';
-import 'config/router.dart';
-import 'config/sound_controller.dart';
 import 'provider/theme_provider.dart';
+import 'config/sound_controller.dart';
+import 'config/router.dart';
+import 'data/local_storage.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,12 +22,16 @@ void main() async {
   );
 
   await LocalStorage.init();
-  MobileAds.instance.initialize();
+  if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+    await MobileAds.instance.initialize();
+  }
 
-  SoundController()
-      .setMusicVolume(LocalStorage().getDouble('musicVolume') ?? 0.3);
+  SoundController().setMusicVolume(
+    LocalStorage().getDouble('musicVolume') ?? 0.3,
+  );
   SoundController().setSoundEffectsVolume(
-      LocalStorage().getDouble('soundEffectsVolume') ?? 0.5);
+    LocalStorage().getDouble('soundEffectsVolume') ?? 0.5,
+  );
 
   // Force portrait orientation
   SystemChrome.setPreferredOrientations([
