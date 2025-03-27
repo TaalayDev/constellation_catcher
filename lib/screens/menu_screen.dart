@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../provider/database_provider.dart';
 import '../components/background_gradient.dart';
-import '../config/sound_controller.dart';
+import '../core/sound_controller.dart';
 import 'settings_screen.dart';
 
 class MenuScreen extends StatefulHookConsumerWidget {

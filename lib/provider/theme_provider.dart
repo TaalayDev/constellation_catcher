@@ -1,8 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../data/local_storage.dart';
-import '../config/game_theme.dart';
-import '../config/theme.dart';
+import '../core/game_theme.dart';
+import '../core/theme.dart';
 
 final gameThemeProvider =
     StateNotifierProvider<GameThemeNotifier, GameTheme>((ref) {

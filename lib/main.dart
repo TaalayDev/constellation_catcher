@@ -9,8 +9,8 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'provider/theme_provider.dart';
-import 'config/sound_controller.dart';
-import 'config/router.dart';
+import 'core/sound_controller.dart';
+import 'core/router.dart';
 import 'data/local_storage.dart';
 import 'firebase_options.dart';
 

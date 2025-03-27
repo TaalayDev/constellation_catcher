@@ -4,8 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components/background_gradient.dart';
-import '../config/game_theme.dart';
-import '../config/sound_controller.dart';
+import '../core/game_theme.dart';
+import '../core/sound_controller.dart';
 import '../data/local_storage.dart';
 import '../provider/theme_provider.dart';
 

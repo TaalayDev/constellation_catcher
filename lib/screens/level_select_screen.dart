@@ -2,7 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../components/background_gradient.dart';
-import '../config/sound_controller.dart';
+import '../core/sound_controller.dart';
 import '../data/local_storage.dart';
 
 class LevelSelectScreen extends StatefulWidget {

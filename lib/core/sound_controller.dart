@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:constellation_catcher/config/assets.dart';
+import 'package:constellation_catcher/core/config/assets.dart';
 import 'package:just_audio/just_audio.dart';
 
 class SoundController {
@@ -23,6 +23,8 @@ class SoundController {
   // Sound assets
   static final _sounds = {
     'click': Assets.audio.click,
+    'connect': Assets.audio.connect,
+    'success': Assets.audio.success,
   };
 
   // Background music tracks

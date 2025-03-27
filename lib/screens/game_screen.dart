@@ -6,9 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../components/background_gradient.dart';
-import '../config/game_config.dart';
+import '../components/completion_effects.dart';
+import '../components/shooting_star.dart';
+import '../core/config/game_config.dart';
 import '../components/dialogs/constellation_complete_dialog.dart';
-import '../config/sound_controller.dart';
+import '../core/sound_controller.dart';
 import '../data/constellation_data.dart';
 import '../models/constellation_level.dart';
 import '../provider/database_provider.dart';
@@ -243,6 +245,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
     _gameTimer?.cancel();
     _powerUpController.dispose();
     _comboController.dispose();
+
     for (var controller in _starAnimationControllers) {
       controller.dispose();
     }
@@ -668,6 +671,17 @@ class _GameScreenState extends ConsumerState<GameScreen>
         });
 
         HapticFeedback.lightImpact();
+        SoundController().playSound('connect');
+
+        if (_isValidConnection(_currentStarIndex, i)) {
+          _consecutiveCorrect++;
+          if (_consecutiveCorrect >= 3) {
+            _comboMultiplier = math.min(4, _consecutiveCorrect ~/ 3);
+
+            // Show combo animation
+            _comboController.forward(from: 0);
+          }
+        }
         return;
       }
     }
@@ -728,6 +742,8 @@ class _GameScreenState extends ConsumerState<GameScreen>
     });
 
     HapticFeedback.lightImpact();
+    SoundController().playSound('success');
+
     _endGame(completed: true);
   }
 

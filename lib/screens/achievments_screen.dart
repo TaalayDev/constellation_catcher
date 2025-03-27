@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../config/sound_controller.dart';
+import '../core/sound_controller.dart';
 import '../data/database.dart';
 import '../components/background_gradient.dart';
 import '../provider/database_provider.dart';
