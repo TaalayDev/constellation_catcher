@@ -34,8 +34,7 @@ class GameScreen extends StatefulHookConsumerWidget {
   ConsumerState<GameScreen> createState() => _GameScreenState();
 }
 
-class _GameScreenState extends ConsumerState<GameScreen>
-    with TickerProviderStateMixin {
+class _GameScreenState extends ConsumerState<GameScreen> with TickerProviderStateMixin {
   late List<AnimatedGameStar> _backgroundStars;
   int _currentStarIndex = -1;
   int _currentLevel = 0;
@@ -333,8 +332,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
 
           Padding(
             padding: _getResponsivePadding(context),
-            child:
-                _levelComplete ? const SizedBox() : _buildLevelInfoUI(context),
+            child: _levelComplete ? const SizedBox() : _buildLevelInfoUI(context),
           ),
         ],
       ),
@@ -393,9 +391,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: available
-                  ? Colors.white.withOpacity(0.2)
-                  : Colors.white.withOpacity(0.05),
+              color: available ? Colors.white.withOpacity(0.2) : Colors.white.withOpacity(0.05),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
@@ -549,9 +545,7 @@ class _GameScreenState extends ConsumerState<GameScreen>
                 final isWideScreen = constraints.maxWidth > 600;
                 final size = Size(
                   constraints.maxWidth,
-                  !isWideScreen
-                      ? constraints.maxHeight * 0.6
-                      : constraints.maxHeight,
+                  !isWideScreen ? constraints.maxHeight * 0.6 : constraints.maxHeight,
                 );
 
                 return GestureDetector(
@@ -708,6 +702,8 @@ class _GameScreenState extends ConsumerState<GameScreen>
     final isCorrectPattern = _playerConnections.every((connection) {
       return _isValidConnection(connection[0], connection[1]);
     });
+
+    print('Player Connections: $_playerConnections');
 
     if (isCorrectPattern) {
       _handleCorrectPattern();
@@ -883,8 +879,7 @@ class AdaptiveConstellationPainter extends CustomPainter {
 
     // Draw completed connections
     for (final indices in connections) {
-      if (completedIndices.contains(indices[0]) &&
-          completedIndices.contains(indices[1])) {
+      if (completedIndices.contains(indices[0]) && completedIndices.contains(indices[1])) {
         final start = constellation[indices[0]];
         final end = constellation[indices[1]];
         canvas.drawLine(
@@ -928,9 +923,7 @@ class AdaptiveConstellationPainter extends CustomPainter {
         _calculateStarPosition(position, size),
         glowRadius,
         Paint()
-          ..color = isActive
-              ? Colors.white.withOpacity(0.3)
-              : Colors.white.withOpacity(0.1)
+          ..color = isActive ? Colors.white.withOpacity(0.3) : Colors.white.withOpacity(0.1)
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
       );
 
@@ -948,10 +941,7 @@ class AdaptiveConstellationPainter extends CustomPainter {
       canvas.drawCircle(
         _calculateStarPosition(position, size),
         isActive ? starRadius * 1.2 : starRadius,
-        starPaint
-          ..color = isCompleted || isActive
-              ? Colors.white
-              : Colors.white.withOpacity(0.5),
+        starPaint..color = isCompleted || isActive ? Colors.white : Colors.white.withOpacity(0.5),
       );
     }
   }

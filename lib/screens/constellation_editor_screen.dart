@@ -7,8 +7,7 @@ class ConstellationEditorScreen extends StatefulWidget {
   const ConstellationEditorScreen({super.key});
 
   @override
-  State<ConstellationEditorScreen> createState() =>
-      _ConstellationEditorScreenState();
+  State<ConstellationEditorScreen> createState() => _ConstellationEditorScreenState();
 }
 
 class _ConstellationEditorScreenState extends State<ConstellationEditorScreen> {
@@ -69,10 +68,12 @@ class _ConstellationEditorScreenState extends State<ConstellationEditorScreen> {
         _dragPosition = localPosition;
       });
     }
+    setState(() {
+      _points.add(Offset(normalizedX, normalizedY));
+    });
   }
 
-  void _handleDragUpdate(
-      DragUpdateDetails details, BoxConstraints constraints) {
+  void _handleDragUpdate(DragUpdateDetails details, BoxConstraints constraints) {
     if (!_isDragging || _connectionStartIndex == null) return;
 
     final RenderBox box = context.findRenderObject() as RenderBox;
@@ -84,9 +85,7 @@ class _ConstellationEditorScreenState extends State<ConstellationEditorScreen> {
   }
 
   void _handleDragEnd(DragEndDetails details, BoxConstraints constraints) {
-    if (!_isDragging ||
-        _connectionStartIndex == null ||
-        _dragPosition == null) {
+    if (!_isDragging || _connectionStartIndex == null || _dragPosition == null) {
       setState(() {
         _isDragging = false;
         _connectionStartIndex = null;
@@ -204,7 +203,7 @@ class _ConstellationEditorScreenState extends State<ConstellationEditorScreen> {
               child: Opacity(
                 opacity: 0.5,
                 child: Image.network(
-                  'https://www.star-registration.com/cdn/shop/articles/88_Zwillinge_1200x1200.jpg?v=1682454448',
+                  'https://media.gettyimages.com/id/1284299614/vector/perseus-constellation-on-transparent-background.jpg?s=1024x1024&w=gi&k=20&c=OuY_dSfdp8hgvOLMmA9QlJVAjItOygGKfg8PiX1eiWY=',
                 ),
               ),
             ),
@@ -217,10 +216,8 @@ class _ConstellationEditorScreenState extends State<ConstellationEditorScreen> {
                       details,
                       constraints,
                     ),
-                    onPanStart: (details) =>
-                        _handleDragStart(details, constraints),
-                    onPanUpdate: (details) =>
-                        _handleDragUpdate(details, constraints),
+                    onPanStart: (details) => _handleDragStart(details, constraints),
+                    onPanUpdate: (details) => _handleDragUpdate(details, constraints),
                     onPanEnd: (details) => _handleDragEnd(details, constraints),
                     child: CustomPaint(
                       painter: ConstellationPainter(
@@ -446,10 +443,7 @@ class ConstellationPainter extends CustomPainter {
       );
 
       // Draw point highlight/glow
-      if (i == connectionStartIndex ||
-          (isDragging &&
-              dragPosition != null &&
-              (point - dragPosition!).distance < 30)) {
+      if (i == connectionStartIndex || (isDragging && dragPosition != null && (point - dragPosition!).distance < 30)) {
         canvas.drawCircle(
           point,
           10,

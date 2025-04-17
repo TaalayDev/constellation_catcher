@@ -93,8 +93,7 @@ class ConstellationDataService {
   static final Map<String, ConstellationInfo> _constellations = {
     'Triangulum': ConstellationInfo(
       name: 'Triangulum',
-      mythology:
-          'Named after its triangular shape, this constellation has no known mythological significance.',
+      mythology: 'Named after its triangular shape, this constellation has no known mythological significance.',
       bestViewing: 'Autumn months in Northern Hemisphere',
       brightestStar: 'Beta Trianguli',
       magnitude: '3.00',
@@ -108,8 +107,7 @@ class ConstellationDataService {
       culturalSignificance: [
         CulturalSignificance(
             culture: 'Ancient Greek',
-            interpretation:
-                'Associated with the triangle, a symbol of the number three in ancient mathematics')
+            interpretation: 'Associated with the triangle, a symbol of the number three in ancient mathematics')
       ],
       mainStars: [
         StarInfo(
@@ -119,8 +117,7 @@ class ConstellationDataService {
             distance: '63 light-years',
             spectralType: 'A5V')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the distinctive triangle shape',
         'Use it to find the Andromeda Galaxy',
@@ -151,8 +148,7 @@ class ConstellationDataService {
                 'Zeus transformed Callisto into a bear and placed her in the stars to protect her from Hera\'s wrath.'),
         CulturalSignificance(
             culture: 'Native American',
-            interpretation:
-                'Associated with the Great Bear, which is hunted through the seasons')
+            interpretation: 'Associated with the Great Bear, which is hunted through the seasons')
       ],
       mainStars: [
         StarInfo(
@@ -162,8 +158,7 @@ class ConstellationDataService {
             distance: '433 light-years',
             spectralType: 'F7Ib')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Use the two stars at the end of the bowl of the Big Dipper to find Polaris',
         'Polaris is the last star in the handle of the Little Dipper',
@@ -243,13 +238,10 @@ class ConstellationDataService {
       visibleFrom: 'Visible year-round from Southern Hemisphere',
       culturalSignificance: [
         CulturalSignificance(
-            culture: 'Ancient Greek',
-            interpretation:
-                'Associated with the scorpion that stung Orion, the hunter'),
+            culture: 'Ancient Greek', interpretation: 'Associated with the scorpion that stung Orion, the hunter'),
         CulturalSignificance(
             culture: 'Babylonian',
-            interpretation:
-                'Associated with the scorpion goddess Ishhara, protector of the dead')
+            interpretation: 'Associated with the scorpion goddess Ishhara, protector of the dead')
       ],
       mainStars: [
         StarInfo(
@@ -259,8 +251,7 @@ class ConstellationDataService {
             distance: '550 light-years',
             spectralType: 'M1Iab-b')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the distinctive curved shape of the scorpion',
         'Use the stars of Scorpius to find the planets Jupiter and Saturn',
@@ -290,9 +281,7 @@ class ConstellationDataService {
             interpretation:
                 'The queen was placed in the stars as punishment, forced to circle the celestial pole forever'),
         CulturalSignificance(
-            culture: 'Chinese',
-            interpretation:
-                'Known as the Sky Palace, associated with imperial authority')
+            culture: 'Chinese', interpretation: 'Known as the Sky Palace, associated with imperial authority')
       ],
       mainStars: [
         StarInfo(
@@ -302,8 +291,7 @@ class ConstellationDataService {
             distance: '228 light-years',
             spectralType: 'K0II')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the distinctive W or M shape',
         'Use it to find the Andromeda Galaxy',
@@ -330,12 +318,9 @@ class ConstellationDataService {
       culturalSignificance: [
         CulturalSignificance(
             culture: 'Ancient Greek',
-            interpretation:
-                'Associated with the hunter Orion, who was placed in the stars after his death'),
+            interpretation: 'Associated with the hunter Orion, who was placed in the stars after his death'),
         CulturalSignificance(
-            culture: 'Egyptian',
-            interpretation:
-                'Associated with Osiris, god of the afterlife and rebirth')
+            culture: 'Egyptian', interpretation: 'Associated with Osiris, god of the afterlife and rebirth')
       ],
       mainStars: [
         StarInfo(
@@ -351,8 +336,7 @@ class ConstellationDataService {
             distance: '640 light-years',
             spectralType: 'M1Iab')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the distinctive Belt of Orion',
         'Use it to find the Orion Nebula (M42)',
@@ -379,13 +363,9 @@ class ConstellationDataService {
       visibleFrom: 'Visible year-round from most of the world',
       culturalSignificance: [
         CulturalSignificance(
-            culture: 'Greek',
-            interpretation:
-                'Associated with the lyre of Orpheus, the musician and poet'),
+            culture: 'Greek', interpretation: 'Associated with the lyre of Orpheus, the musician and poet'),
         CulturalSignificance(
-            culture: 'Native American',
-            interpretation:
-                'Associated with the eagle, a symbol of strength and power')
+            culture: 'Native American', interpretation: 'Associated with the eagle, a symbol of strength and power')
       ],
       mainStars: [
         StarInfo(
@@ -395,8 +375,7 @@ class ConstellationDataService {
             distance: '25 light-years',
             spectralType: 'A0V')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the bright star Vega',
         'Use it to find the Ring Nebula (M57)',
@@ -421,13 +400,9 @@ class ConstellationDataService {
       visibleFrom: 'Visible year-round from most of the world',
       culturalSignificance: [
         CulturalSignificance(
-            culture: 'Greek',
-            interpretation:
-                'Associated with the swan Zeus transformed into to seduce Leda'),
+            culture: 'Greek', interpretation: 'Associated with the swan Zeus transformed into to seduce Leda'),
         CulturalSignificance(
-            culture: 'Native American',
-            interpretation:
-                'Associated with the eagle, a symbol of strength and power')
+            culture: 'Native American', interpretation: 'Associated with the eagle, a symbol of strength and power')
       ],
       mainStars: [
         StarInfo(
@@ -437,8 +412,7 @@ class ConstellationDataService {
             distance: '1,500 light-years',
             spectralType: 'A2Ia')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the Northern Cross asterism',
         'Use it to find the North America Nebula (NGC 7000)',
@@ -463,13 +437,9 @@ class ConstellationDataService {
       visibleFrom: 'Visible year-round from most of the world',
       culturalSignificance: [
         CulturalSignificance(
-            culture: 'Greek',
-            interpretation:
-                'Associated with the hero Perseus, who slew the Gorgon Medusa'),
+            culture: 'Greek', interpretation: 'Associated with the hero Perseus, who slew the Gorgon Medusa'),
         CulturalSignificance(
-            culture: 'Native American',
-            interpretation:
-                'Associated with the eagle, a symbol of strength and power')
+            culture: 'Native American', interpretation: 'Associated with the eagle, a symbol of strength and power')
       ],
       mainStars: [
         StarInfo(
@@ -479,8 +449,7 @@ class ConstellationDataService {
             distance: '590 light-years',
             spectralType: 'F5Ib')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the bright star Mirfak',
         'Use it to find the Double Cluster (NGC 869 and NGC 884)',
@@ -506,12 +475,9 @@ class ConstellationDataService {
       culturalSignificance: [
         CulturalSignificance(
             culture: 'Greek',
-            interpretation:
-                'Associated with the winged horse Pegasus, who sprang from the blood of Medusa'),
+            interpretation: 'Associated with the winged horse Pegasus, who sprang from the blood of Medusa'),
         CulturalSignificance(
-            culture: 'Native American',
-            interpretation:
-                'Associated with the eagle, a symbol of strength and power')
+            culture: 'Native American', interpretation: 'Associated with the eagle, a symbol of strength and power')
       ],
       mainStars: [
         StarInfo(
@@ -521,8 +487,7 @@ class ConstellationDataService {
             distance: '196 light-years',
             spectralType: 'M2.5II-III')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the Great Square of Pegasus',
         'Use it to find the Andromeda Galaxy (M31)',
@@ -551,9 +516,7 @@ class ConstellationDataService {
             interpretation:
                 'Associated with the twins Castor and Pollux, who were placed in the stars after their deaths'),
         CulturalSignificance(
-            culture: 'Native American',
-            interpretation:
-                'Associated with the eagle, a symbol of strength and power')
+            culture: 'Native American', interpretation: 'Associated with the eagle, a symbol of strength and power')
       ],
       mainStars: [
         StarInfo(
@@ -563,8 +526,7 @@ class ConstellationDataService {
             distance: '34 light-years',
             spectralType: 'K0III')
       ],
-      historicalBackground:
-          'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
+      historicalBackground: 'One of the 48 constellations listed by Ptolemy in the 2nd century AD.',
       observationTips: [
         'Look for the bright stars Castor and Pollux',
         'Use them to find the Eskimo Nebula (NGC 2392)',
@@ -579,9 +541,9 @@ class ConstellationDataService {
       name: 'Triangulum',
       requiredScore: 500,
       starPositions: const [
-        Offset(0.45, 0.40), // Alpha Trianguli
-        Offset(0.55, 0.40), // Beta Trianguli
-        Offset(0.50, 0.25), // Gamma Trianguli
+        Offset(0.21, 0.29),
+        Offset(0.42, 0.17),
+        Offset(0.78, 0.80),
       ],
       connections: const [
         [0, 1], // Alpha to Beta
@@ -594,11 +556,11 @@ class ConstellationDataService {
       name: 'Cassiopeia',
       requiredScore: 1000,
       starPositions: const [
-        Offset(0.30, 0.35), // Alpha Cas (Schedar)
-        Offset(0.40, 0.25), // Beta Cas (Caph)
-        Offset(0.50, 0.35), // Gamma Cas (Tsih)
-        Offset(0.60, 0.25), // Delta Cas (Ruchbah)
-        Offset(0.70, 0.35), // Epsilon Cas (Segin)
+        Offset(0.21, 0.33),
+        Offset(0.34, 0.49),
+        Offset(0.49, 0.48),
+        Offset(0.60, 0.63),
+        Offset(0.77, 0.50),
       ],
       connections: const [
         [0, 1],
@@ -612,20 +574,22 @@ class ConstellationDataService {
       name: 'Ursa Minor',
       requiredScore: 1500,
       starPositions: const [
-        Offset(0.50, 0.20), // Polaris (North Star)
-        Offset(0.45, 0.25), // Kochab
-        Offset(0.55, 0.25), // Pherkad
-        Offset(0.48, 0.30), // Epsilon UMi
-        Offset(0.52, 0.35), // Zeta UMi
-        Offset(0.50, 0.40), // Eta UMi
+        Offset(0.64, 0.15),
+        Offset(0.55, 0.26),
+        Offset(0.48, 0.39),
+        Offset(0.50, 0.56),
+        Offset(0.60, 0.70),
+        Offset(0.50, 0.76),
+        Offset(0.40, 0.60),
       ],
       connections: const [
-        [2, 3],
-        [0, 2],
-        [1, 0],
-        [1, 3],
-        [3, 4],
-        [4, 5],
+        [0, 1], // First handle segment
+        [1, 2], // Second handle segment
+        [2, 3], // Connection to the bowl
+        [3, 4], // First bowl segment
+        [4, 5], // Second bowl segment
+        [5, 6], // Third bowl segment
+        [6, 3], // Complete the bowl
       ],
       isClosedLoop: false,
     ),
@@ -633,16 +597,59 @@ class ConstellationDataService {
       name: 'Scorpius',
       requiredScore: 2000,
       starPositions: const [
-        Offset(0.30, 0.20), // Antares (Alpha Sco)
-        Offset(0.35, 0.25), // Graffias (Beta Sco)
-        Offset(0.40, 0.30), // Delta Sco
-        Offset(0.45, 0.35), // Pi Sco
-        Offset(0.50, 0.40), // Sigma Sco
-        Offset(0.55, 0.45), // Tau Sco
-        Offset(0.60, 0.50), // Shaula (Lambda Sco)
-        Offset(0.55, 0.55), // Lesath (Upsilon Sco)
-        Offset(0.25, 0.25), // Nu Sco
-        Offset(0.45, 0.25), // Rho Sco
+        Offset(0.23, 0.45),
+        Offset(0.18, 0.50),
+        Offset(0.14, 0.54),
+        Offset(0.21, 0.60),
+        Offset(0.34, 0.61),
+        Offset(0.44, 0.59),
+        Offset(0.47, 0.50),
+        Offset(0.49, 0.41),
+        Offset(0.58, 0.29),
+        Offset(0.62, 0.25),
+        Offset(0.68, 0.23),
+        Offset(0.83, 0.18),
+        Offset(0.80, 0.12),
+        Offset(0.82, 0.26),
+        Offset(0.82, 0.32),
+      ],
+      connections: const [
+        [12, 11],
+        [11, 13],
+        [13, 14],
+        [11, 10],
+        [10, 9],
+        [9, 8],
+        [8, 7],
+        [7, 6],
+        [6, 5],
+        [5, 4],
+        [4, 3],
+        [3, 2],
+        [2, 1],
+        [1, 0]
+      ],
+      isClosedLoop: false,
+    ),
+
+    ConstellationLevel(
+      name: 'Orion',
+      requiredScore: 1500,
+      starPositions: const [
+        Offset(0.22, 0.20),
+        Offset(0.28, 0.26),
+        Offset(0.43, 0.19),
+        Offset(0.51, 0.28),
+        Offset(0.47, 0.45),
+        Offset(0.43, 0.48),
+        Offset(0.38, 0.50),
+        Offset(0.33, 0.70),
+        Offset(0.60, 0.66),
+        Offset(0.79, 0.27),
+        Offset(0.79, 0.21),
+        Offset(0.74, 0.17),
+        Offset(0.77, 0.37),
+        Offset(0.72, 0.41),
       ],
       connections: const [
         [0, 1],
@@ -651,33 +658,15 @@ class ConstellationDataService {
         [3, 4],
         [4, 5],
         [5, 6],
+        [6, 1],
         [6, 7],
-        [0, 8],
-        [0, 9],
-      ],
-      isClosedLoop: false,
-    ),
-    ConstellationLevel(
-      name: 'Orion',
-      requiredScore: 1500,
-      starPositions: const [
-        Offset(0.45, 0.25), // Betelgeuse (Alpha Ori)
-        Offset(0.55, 0.25), // Bellatrix (Gamma Ori)
-        Offset(0.50, 0.35), // Alnilam (Epsilon Ori - center belt)
-        Offset(0.45, 0.35), // Alnitak (Zeta Ori - left belt)
-        Offset(0.55, 0.35), // Mintaka (Delta Ori - right belt)
-        Offset(0.40, 0.45), // Saiph (Kappa Ori)
-        Offset(0.60, 0.45), // Rigel (Beta Ori)
-      ],
-      connections: const [
-        [0, 1], // Betelgeuse to Bellatrix (shoulders)
-        [3, 2], // Belt stars: left to center
-        [2, 4], // Belt stars: center to right
-        [0, 3], // Betelgeuse to left belt
-        [1, 4], // Bellatrix to right belt
-        [3, 5], // Left belt to Saiph
-        [4, 6], // Right belt to Rigel
-        [5, 6], // Saiph to Rigel (feet)
+        [7, 8],
+        [8, 4],
+        [3, 9],
+        [9, 10],
+        [10, 11],
+        [9, 12],
+        [12, 13]
       ],
       isClosedLoop: false,
     ),
@@ -687,18 +676,21 @@ class ConstellationDataService {
       name: "Lyra",
       requiredScore: 1750,
       starPositions: const [
-        Offset(0.68, 1.07 / 2 - 0.5),
-        Offset(0.55, 1.39 / 2 - 0.5),
-        Offset(0.37, 1.61 / 2 - 0.5),
-        Offset(0.34, 2.39 / 2 - 0.5),
-        Offset(0.52, 2.22 / 2 - 0.5),
+        Offset(0.52, 0.15),
+        Offset(0.64, 0.22),
+        Offset(0.52, 0.32),
+        Offset(0.37, 0.39),
+        Offset(0.29, 0.74),
+        Offset(0.44, 0.68),
       ],
       connections: const [
         [0, 1],
         [1, 2],
+        [2, 0],
         [2, 3],
         [3, 4],
-        [4, 1],
+        [4, 5],
+        [5, 2]
       ],
       isClosedLoop: false,
     ),
@@ -707,27 +699,25 @@ class ConstellationDataService {
       name: "Cygnus",
       requiredScore: 2200,
       starPositions: const [
-        Offset(0.53, 0.205),
-        Offset(0.61, 0.335),
-        Offset(0.74, 0.49),
-        Offset(0.90, 0.67),
-        Offset(0.93, 0.025),
-        Offset(0.87, 0.07),
-        Offset(0.81, 0.235),
-        Offset(0.45, 0.495),
-        Offset(0.27, 0.555),
-        Offset(0.07, 0.545),
+        Offset(0.38, 0.29),
+        Offset(0.51, 0.45),
+        Offset(0.35, 0.61),
+        Offset(0.14, 0.71),
+        Offset(0.73, 0.32),
+        Offset(0.78, 0.15),
+        Offset(0.66, 0.58),
+        Offset(0.78, 0.72),
+        Offset(0.86, 0.78),
       ],
       connections: const [
-        [0, 1],
+        [5, 4],
+        [4, 1],
         [1, 2],
         [2, 3],
-        [4, 5],
-        [5, 6],
-        [6, 1],
-        [1, 7],
-        [7, 8],
-        [8, 9],
+        [1, 0],
+        [1, 6],
+        [6, 7],
+        [7, 8]
       ],
       isClosedLoop: false,
     ),
@@ -736,47 +726,47 @@ class ConstellationDataService {
       name: "Perseus",
       requiredScore: 2500,
       starPositions: const [
-        Offset(0.52, 0),
-        Offset(0.48, 0.06),
-        Offset(0.52, 0.07),
-        Offset(0.41, 0.16),
-        Offset(0.47, 0.165),
-        Offset(0.58, 0.155),
-        Offset(0.67, 0.12),
-        Offset(0.83, 0.05),
-        Offset(0.32, 0.215),
-        Offset(0.20, 0.225),
-        Offset(0.17, 0.2),
-        Offset(0.16, 0.15),
-        Offset(0.22, 0.15),
-        Offset(0.24, 0.405),
-        Offset(0.51, 0.37),
-        Offset(0.53, 0.42),
-        Offset(0.23, 0.515),
-        Offset(0.26, 0.61),
-        Offset(0.32, 0.6),
+        Offset(0.53, 0.11),
+        Offset(0.53, 0.20),
+        Offset(0.48, 0.18),
+        Offset(0.39, 0.30),
+        Offset(0.47, 0.30),
+        Offset(0.60, 0.29),
+        Offset(0.70, 0.25),
+        Offset(0.89, 0.17),
+        Offset(0.29, 0.36),
+        Offset(0.16, 0.37),
+        Offset(0.11, 0.35),
+        Offset(0.11, 0.28),
+        Offset(0.16, 0.29),
+        Offset(0.20, 0.59),
+        Offset(0.51, 0.54),
+        Offset(0.54, 0.61),
+        Offset(0.19, 0.72),
+        Offset(0.22, 0.82),
+        Offset(0.30, 0.81),
       ],
       connections: const [
-        [0, 1],
-        [1, 3],
+        [0, 2],
+        [2, 3],
         [3, 8],
         [8, 9],
         [9, 10],
         [10, 11],
         [11, 12],
-        [0, 2],
-        [2, 4],
+        [3, 4],
+        [4, 1],
+        [1, 0],
         [4, 5],
         [5, 6],
         [6, 7],
-        [4, 3],
-        [8, 13],
         [4, 14],
         [14, 15],
-        [14, 13],
+        [8, 13],
+        [13, 14],
         [13, 16],
         [16, 17],
-        [17, 18],
+        [17, 18]
       ],
       isClosedLoop: false,
     ),
