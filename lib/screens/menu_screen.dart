@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../provider/database_provider.dart';
 import '../components/background_gradient.dart';
 import '../core/sound_controller.dart';
+import '../provider/interstitial_ad_controller.dart';
 import 'settings_screen.dart';
 
 class MenuScreen extends StatefulHookConsumerWidget {
@@ -16,8 +17,7 @@ class MenuScreen extends StatefulHookConsumerWidget {
   ConsumerState<MenuScreen> createState() => _MenuScreenState();
 }
 
-class _MenuScreenState extends ConsumerState<MenuScreen>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+class _MenuScreenState extends ConsumerState<MenuScreen> with TickerProviderStateMixin, WidgetsBindingObserver {
   late final AnimationController _backgroundController;
   final List<MenuStar> _stars = [];
 
@@ -56,8 +56,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    if (state == AppLifecycleState.paused ||
-        state == AppLifecycleState.inactive) {
+    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
       _stopFallingStarsTimer();
     } else if (state == AppLifecycleState.resumed) {
       _startFallingStarsTimer();
@@ -197,15 +196,25 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
                   _buildMenuButton(
                     'Play',
                     Icons.play_arrow_rounded,
-                    () => Navigator.pushNamed(context, '/game'),
+                    () {
+                      SoundController().playSound('click');
+                      ref.watch(interstitialAdProvider.notifier).showAdIfLoaded(() {
+                        Navigator.pushNamed(context, '/game');
+                      });
+                    },
                     buttonTextSize,
                     isDesktop,
                   ),
+                  // SizedBox(height: isDesktop ? 24 : 16),
+                  // _buildExpeditionButton(context, buttonTextSize, isDesktop),
                   SizedBox(height: isDesktop ? 24 : 16),
                   _buildMenuButton(
                     'Level Select',
                     Icons.grid_view_rounded,
-                    () => Navigator.pushNamed(context, '/level-select'),
+                    () {
+                      SoundController().playSound('click');
+                      Navigator.pushNamed(context, '/level-select');
+                    },
                     buttonTextSize,
                     isDesktop,
                   ),
@@ -213,7 +222,10 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
                   _buildMenuButton(
                     'Achievements',
                     Icons.emoji_events_rounded,
-                    () => Navigator.pushNamed(context, '/achievements'),
+                    () {
+                      SoundController().playSound('click');
+                      Navigator.pushNamed(context, '/achievements');
+                    },
                     buttonTextSize,
                     isDesktop,
                   ),
@@ -221,7 +233,10 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
                   _buildMenuButton(
                     'Settings',
                     Icons.settings_rounded,
-                    () => SettingsDialog.show(context),
+                    () {
+                      SoundController().playSound('click');
+                      SettingsDialog.show(context);
+                    },
                     buttonTextSize,
                     isDesktop,
                   ),
@@ -367,8 +382,24 @@ class _MenuScreenState extends ConsumerState<MenuScreen>
     );
   }
 
+  Widget _buildExpeditionButton(
+    BuildContext context,
+    double buttonTextSize,
+    bool isDesktop,
+  ) {
+    return _buildMenuButton(
+      'Constellation Expedition',
+      Icons.rocket_launch_rounded,
+      () => Navigator.pushNamed(context, '/expedition'),
+      buttonTextSize,
+      isDesktop,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final adLoaded = ref.watch(interstitialAdProvider);
+
     return Scaffold(
       body: BackgroundGradient(
         child: LayoutBuilder(
@@ -430,8 +461,7 @@ class MenuStarWidget extends StatefulWidget {
   State<MenuStarWidget> createState() => _MenuStarWidgetState();
 }
 
-class _MenuStarWidgetState extends State<MenuStarWidget>
-    with SingleTickerProviderStateMixin {
+class _MenuStarWidgetState extends State<MenuStarWidget> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Tween<double> _tween;
 

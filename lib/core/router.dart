@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/constellation_editor_screen.dart';
+import '../screens/constellation_expedition.dart';
 import '../screens/level_select_screen.dart';
 import '../screens/game_screen.dart';
 import '../screens/menu_screen.dart';
@@ -14,6 +15,7 @@ class AppRouter {
   static const String splash = '/';
   static const String menu = '/menu';
   static const String game = '/game';
+  static const String expedition = '/expedition';
   static const String levelSelect = '/level-select';
   static const String settings = '/settings';
   static const String achievements = '/achievements';
@@ -40,9 +42,15 @@ class AppRouter {
             ),
           ),
         );
+      case expedition:
+        return MaterialPageRoute(
+          builder: (_) => const AdWrapper(child: ExpeditionGameScreen()),
+        );
       case levelSelect:
         return MaterialPageRoute(
-          builder: (_) => const AdWrapper(child: LevelSelectScreen()),
+          builder: (_) => const AdWrapper(
+            child: LevelSelectScreen(),
+          ),
         );
       case AppRouter.settings:
         return MaterialPageRoute(

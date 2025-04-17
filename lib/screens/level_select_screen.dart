@@ -1,18 +1,20 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../components/background_gradient.dart';
 import '../core/sound_controller.dart';
 import '../data/local_storage.dart';
+import '../provider/interstitial_ad_controller.dart';
 
-class LevelSelectScreen extends StatefulWidget {
+class LevelSelectScreen extends StatefulHookConsumerWidget {
   const LevelSelectScreen({super.key});
 
   @override
-  State<LevelSelectScreen> createState() => _LevelSelectScreenState();
+  ConsumerState<LevelSelectScreen> createState() => _LevelSelectScreenState();
 }
 
-class _LevelSelectScreenState extends State<LevelSelectScreen> {
+class _LevelSelectScreenState extends ConsumerState<LevelSelectScreen> {
   late final List<String> _completedLevels = LocalStorage().completedLevels;
   late final List<LevelInfo> _levels;
 
@@ -167,8 +169,7 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
                   Expanded(
                     child: GridView.builder(
                       padding: const EdgeInsets.all(16),
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 400,
                         crossAxisSpacing: 16,
                         mainAxisSpacing: 16,
@@ -181,11 +182,14 @@ class _LevelSelectScreenState extends State<LevelSelectScreen> {
                           level: level,
                           onTap: level.unlocked
                               ? () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    '/game',
-                                    arguments: index,
-                                  );
+                                  SoundController().playSound('click');
+                                  ref.watch(interstitialAdProvider.notifier).showAdIfLoaded(() {
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/game',
+                                      arguments: index,
+                                    );
+                                  });
                                 }
                               : null,
                         );
@@ -293,9 +297,7 @@ class _LevelCard extends StatelessWidget {
                           Text(
                             level.name,
                             style: TextStyle(
-                              color: level.unlocked
-                                  ? Colors.white
-                                  : Colors.white38,
+                              color: level.unlocked ? Colors.white : Colors.white38,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
@@ -329,16 +331,13 @@ class _LevelCard extends StatelessWidget {
                           Icon(
                             Icons.star_rounded,
                             size: 16,
-                            color:
-                                level.unlocked ? Colors.amber : Colors.white24,
+                            color: level.unlocked ? Colors.amber : Colors.white24,
                           ),
                           const SizedBox(width: 4),
                           Text(
                             '${level.stars} stars',
                             style: TextStyle(
-                              color: level.unlocked
-                                  ? Colors.white70
-                                  : Colors.white38,
+                              color: level.unlocked ? Colors.white70 : Colors.white38,
                               fontSize: 14,
                             ),
                           ),
@@ -350,8 +349,7 @@ class _LevelCard extends StatelessWidget {
                       Text(
                         level.description,
                         style: TextStyle(
-                          color:
-                              level.unlocked ? Colors.white54 : Colors.white24,
+                          color: level.unlocked ? Colors.white54 : Colors.white24,
                           fontSize: 14,
                         ),
                       ),
@@ -362,21 +360,15 @@ class _LevelCard extends StatelessWidget {
                         Row(
                           children: [
                             Icon(
-                              level.completed
-                                  ? Icons.check_circle_rounded
-                                  : Icons.radio_button_unchecked_rounded,
+                              level.completed ? Icons.check_circle_rounded : Icons.radio_button_unchecked_rounded,
                               size: 16,
-                              color: level.completed
-                                  ? Colors.green
-                                  : Colors.white38,
+                              color: level.completed ? Colors.green : Colors.white38,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               level.completed ? 'Completed' : 'Not completed',
                               style: TextStyle(
-                                color: level.completed
-                                    ? Colors.green
-                                    : Colors.white38,
+                                color: level.completed ? Colors.green : Colors.white38,
                                 fontSize: 14,
                               ),
                             ),
