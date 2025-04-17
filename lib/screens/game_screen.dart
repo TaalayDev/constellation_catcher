@@ -541,36 +541,39 @@ class _GameScreenState extends ConsumerState<GameScreen> with TickerProviderStat
               ),
             ),
             Center(
-              child: LayoutBuilder(builder: (context, constraints) {
-                final isWideScreen = constraints.maxWidth > 600;
-                final size = Size(
-                  constraints.maxWidth,
-                  !isWideScreen ? constraints.maxHeight * 0.6 : constraints.maxHeight,
-                );
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 800, maxHeight: 800),
+                child: LayoutBuilder(builder: (context, constraints) {
+                  final isWideScreen = constraints.maxWidth > 600;
+                  final size = Size(
+                    constraints.maxWidth,
+                    !isWideScreen ? constraints.maxHeight * 0.6 : constraints.maxHeight,
+                  );
 
-                return GestureDetector(
-                  onPanStart: (details) => _handleDragStart(details, size),
-                  onPanUpdate: (details) => _handleDragUpdate(details, size),
-                  onPanEnd: _handleDragEnd,
-                  child: CustomPaint(
-                    size: size,
-                    painter: AdaptiveConstellationPainter(
-                      constellation: level.starPositions,
-                      connections: level.connections,
-                      currentIndex: _currentStarIndex,
-                      completedIndices: _completedIndices,
-                      currentDragPosition: _currentDragPosition,
-                      showHint: _showHint,
-                      hintAnimation: _hintController,
-                      isComplete: _levelComplete,
-                      starRadius: _getStarRadius(context),
-                      lineWidth: MediaQuery.of(context).size.width * 0.004,
-                      isClosedLoop: _isClosedLoop,
-                      playerConnections: _playerConnections,
+                  return GestureDetector(
+                    onPanStart: (details) => _handleDragStart(details, size),
+                    onPanUpdate: (details) => _handleDragUpdate(details, size),
+                    onPanEnd: _handleDragEnd,
+                    child: CustomPaint(
+                      size: size,
+                      painter: AdaptiveConstellationPainter(
+                        constellation: level.starPositions,
+                        connections: level.connections,
+                        currentIndex: _currentStarIndex,
+                        completedIndices: _completedIndices,
+                        currentDragPosition: _currentDragPosition,
+                        showHint: _showHint,
+                        hintAnimation: _hintController,
+                        isComplete: _levelComplete,
+                        starRadius: _getStarRadius(context),
+                        lineWidth: MediaQuery.of(context).size.width * 0.004,
+                        isClosedLoop: _isClosedLoop,
+                        playerConnections: _playerConnections,
+                      ),
                     ),
-                  ),
-                );
-              }),
+                  );
+                }),
+              ),
             ),
 
             _buildGameUI(context),
@@ -703,7 +706,7 @@ class _GameScreenState extends ConsumerState<GameScreen> with TickerProviderStat
       return _isValidConnection(connection[0], connection[1]);
     });
 
-    print('Player Connections: $_playerConnections');
+    // print('Player Connections: $_playerConnections');
 
     if (isCorrectPattern) {
       _handleCorrectPattern();

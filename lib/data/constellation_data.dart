@@ -851,32 +851,6 @@ class ConstellationDataService {
       ],
       isClosedLoop: false,
     ),
-
-    // ConstellationLevel(
-    //   name: 'Gemini',
-    //   requiredScore: 3000,
-    //   starPositions: const [
-    //     Offset(0.40, 0.25), // Castor (Alpha Geminorum)
-    //     Offset(0.45, 0.25), // Pollux (Beta Geminorum)
-    //     Offset(0.35, 0.35), // Gamma Geminorum
-    //     Offset(0.50, 0.35), // Delta Geminorum
-    //     Offset(0.30, 0.45), // Epsilon Geminorum
-    //     Offset(0.55, 0.45), // Zeta Geminorum
-    //     Offset(0.40, 0.55), // Eta Geminorum
-    //     Offset(0.45, 0.55), // Mu Geminorum
-    //   ],
-    //   connections: const [
-    //     [0, 1], // Castor to Pollux
-    //     [0, 2], // Castor to Gamma
-    //     [1, 3], // Pollux to Delta
-    //     [2, 4], // Gamma to Epsilon
-    //     [3, 5], // Delta to Zeta
-    //     [4, 6], // Epsilon to Eta
-    //     [5, 7], // Zeta to Mu
-    //     [6, 7], // Eta to Mu
-    //   ],
-    //   isClosedLoop: false,
-    // ),
   ];
 
   static ConstellationInfo getConstellationInfo(String name) {

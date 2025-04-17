@@ -88,7 +88,6 @@ Future<void> initWindowManager() async {
   const size = Size(600, 1000);
   await windowManager.ensureInitialized();
   const windowOptions = WindowOptions(
-    maximumSize: size,
     minimumSize: size,
     size: size,
     center: true,
