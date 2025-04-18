@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:constellation_catcher/data/constellation_data.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -17,6 +18,12 @@ class LevelSelectScreen extends StatefulHookConsumerWidget {
 class _LevelSelectScreenState extends ConsumerState<LevelSelectScreen> {
   late final List<String> _completedLevels = LocalStorage().completedLevels;
   late final List<LevelInfo> _levels;
+  List<String> _difficultyLevels = [
+    'Easy',
+    'Medium',
+    'Hard',
+    'Expert',
+  ];
 
   @override
   void initState() {
@@ -24,99 +31,30 @@ class _LevelSelectScreenState extends ConsumerState<LevelSelectScreen> {
     fillLevels();
   }
 
+  LevelInfo _levelFrom((int, ConstellationInfo) indexed) {
+    final (index, info) = indexed;
+    final length = ConstellationDataService.constellations.length;
+    final previous = index > 0 ? ConstellationDataService.constellations.values.elementAt(index - 1) : null;
+    final level = ConstellationDataService.levels.firstWhere(
+      (level) => level.name == info.name,
+      orElse: () => ConstellationDataService.levels.first,
+    );
+
+    return LevelInfo(
+      name: info.name,
+      difficulty: _difficultyLevels[index ~/ (length / _difficultyLevels.length)],
+      stars: level.starPositions.length,
+      description: info.mythology,
+      completed: _completedLevels.contains(info.name),
+      bestScore: 0,
+      unlocked: _completedLevels.contains(info.name) ||
+          (previous != null && _completedLevels.contains(previous.name)) ||
+          index == 0,
+    );
+  }
+
   void fillLevels() {
-    _levels = [
-      LevelInfo(
-        name: 'Triangulum',
-        difficulty: 'Easy',
-        stars: 3,
-        description: 'A simple triangle constellation to get started',
-        completed: _completedLevels.contains('Triangulum'),
-        bestScore: 1250,
-        unlocked: true,
-      ),
-      LevelInfo(
-        name: 'Cassiopeia',
-        difficulty: 'Medium',
-        stars: 5,
-        description: 'The queen\'s throne in the night sky',
-        completed: _completedLevels.contains('Triangulum'),
-        bestScore: 2100,
-        unlocked: _completedLevels.contains('Triangulum'),
-      ),
-      LevelInfo(
-        name: 'Ursa Minor',
-        difficulty: 'Medium',
-        stars: 7,
-        description: 'The Little Bear points to the North Star',
-        completed: _completedLevels.contains('Cassiopeia'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Cassiopeia'),
-      ),
-      LevelInfo(
-        name: 'Scorpius',
-        difficulty: 'Hard',
-        stars: 9,
-        description: 'A mighty scorpion stretches across the sky',
-        completed: _completedLevels.contains('Ursa Minor'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Ursa Minor'),
-      ),
-      LevelInfo(
-        name: 'Orion',
-        difficulty: 'Expert',
-        stars: 12,
-        description: 'The great hunter strides through the stars',
-        completed: _completedLevels.contains('Scorpius'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Scorpius'),
-      ),
-      LevelInfo(
-        name: 'Lyra',
-        difficulty: 'Expert',
-        stars: 15,
-        description: 'The harp of the heavens sings a sweet melody',
-        completed: _completedLevels.contains('Orion'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Orion'),
-      ),
-      LevelInfo(
-        name: 'Cygnus',
-        difficulty: 'Expert',
-        stars: 18,
-        description: 'The swan glides gracefully through the Milky Way',
-        completed: _completedLevels.contains('Lyra'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Lyra'),
-      ),
-      LevelInfo(
-        name: 'Perseus',
-        difficulty: 'Expert',
-        stars: 20,
-        description: 'The hero holds the head of Medusa in the sky',
-        completed: _completedLevels.contains('Cygnus'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Cygnus'),
-      ),
-      LevelInfo(
-        name: 'Pegasus',
-        difficulty: 'Expert',
-        stars: 22,
-        description: 'The winged horse soars through the night',
-        completed: _completedLevels.contains('Perseus'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Perseus'),
-      ),
-      LevelInfo(
-        name: 'Gemini',
-        difficulty: 'Expert',
-        stars: 25,
-        description: 'The twins cast their gaze across the galaxy',
-        completed: _completedLevels.contains('Pegasus'),
-        bestScore: 0,
-        unlocked: _completedLevels.contains('Pegasus'),
-      ),
-    ];
+    _levels = ConstellationDataService.constellations.values.indexed.map(_levelFrom).toList();
   }
 
   @override
@@ -352,6 +290,8 @@ class _LevelCard extends StatelessWidget {
                           color: level.unlocked ? Colors.white54 : Colors.white24,
                           fontSize: 14,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 12),
 

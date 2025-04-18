@@ -203,7 +203,7 @@ class _ConstellationEditorScreenState extends State<ConstellationEditorScreen> {
               child: Opacity(
                 opacity: 0.5,
                 child: Image.network(
-                  'https://media.gettyimages.com/id/1284299614/vector/perseus-constellation-on-transparent-background.jpg?s=1024x1024&w=gi&k=20&c=OuY_dSfdp8hgvOLMmA9QlJVAjItOygGKfg8PiX1eiWY=',
+                  'https://www.star-registration.com/cdn/shop/articles/31_Jungfrau_1200x1200.jpg?v=1681373719',
                 ),
               ),
             ),
