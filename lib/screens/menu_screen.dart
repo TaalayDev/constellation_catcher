@@ -55,7 +55,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> with TickerProviderStat
     final isPhone = deviceWidth <= 600;
 
     final horizontalPadding = isDesktop
-        ? deviceWidth * 0.2
+        ? deviceWidth * 0.3
         : isTablet
             ? deviceWidth * 0.1
             : 24.0;
@@ -92,7 +92,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> with TickerProviderStat
             children: [
               SizedBox(
                 height: isDesktop
-                    ? 80
+                    ? 48
                     : isTablet
                         ? 64
                         : 48,
@@ -188,7 +188,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> with TickerProviderStat
               // High score section with responsive sizing
               Container(
                 padding: EdgeInsets.all(isDesktop
-                    ? 32
+                    ? 24
                     : isTablet
                         ? 24
                         : 16),
@@ -243,7 +243,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> with TickerProviderStat
               ),
               SizedBox(
                   height: isDesktop
-                      ? 48
+                      ? 32
                       : isTablet
                           ? 40
                           : 32),
