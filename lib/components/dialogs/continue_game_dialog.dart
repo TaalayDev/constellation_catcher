@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -99,18 +101,19 @@ class ContinueGameDialog extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Watch ad button
-                  _buildButton(
-                    icon: Icons.play_circle_outline,
-                    text: 'Watch an Ad to Continue',
-                    textColor: Colors.white,
-                    backgroundColor: Colors.blue.shade700,
-                    onTap: onWatchAd,
-                  )
-                      .animate()
-                      .fadeIn(delay: 200.ms, duration: 400.ms)
-                      .slideY(begin: 0.2, end: 0, delay: 200.ms, duration: 400.ms),
-
-                  // const SizedBox(height: 12),
+                  if (Platform.isAndroid || Platform.isIOS) ...[
+                    _buildButton(
+                      icon: Icons.play_circle_outline,
+                      text: 'Watch an Ad to Continue',
+                      textColor: Colors.white,
+                      backgroundColor: Colors.blue.shade700,
+                      onTap: onWatchAd,
+                    )
+                        .animate()
+                        .fadeIn(delay: 200.ms, duration: 400.ms)
+                        .slideY(begin: 0.2, end: 0, delay: 200.ms, duration: 400.ms),
+                    const SizedBox(height: 12),
+                  ],
 
                   // Restart button
                   // _buildButton(
@@ -124,7 +127,7 @@ class ContinueGameDialog extends StatelessWidget {
                   //     .fadeIn(delay: 300.ms, duration: 400.ms)
                   //     .slideY(begin: 0.2, end: 0, delay: 300.ms, duration: 400.ms),
 
-                  const SizedBox(height: 12),
+                  // const SizedBox(height: 12),
 
                   // Quit button
                   _buildButton(
