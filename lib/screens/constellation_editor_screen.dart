@@ -203,7 +203,7 @@ class _ConstellationEditorScreenState extends State<ConstellationEditorScreen> {
               child: Opacity(
                 opacity: 0.5,
                 child: Image.network(
-                  'https://www.star-registration.com/cdn/shop/articles/31_Jungfrau_1200x1200.jpg?v=1681373719',
+                  'https://www.star-registration.com/cdn/shop/articles/28_Herkules_1200x1200.jpg?v=1681286156',
                 ),
               ),
             ),

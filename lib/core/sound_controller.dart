@@ -66,15 +66,13 @@ class SoundController {
     // Gradually increase volume
     if (!_isMuted) {
       const intervalDuration = Duration(milliseconds: 50);
-      final steps =
-          fadeInDuration.inMilliseconds ~/ intervalDuration.inMilliseconds;
+      final steps = fadeInDuration.inMilliseconds ~/ intervalDuration.inMilliseconds;
       final volumeIncrement = _musicVolume / steps;
 
       double currentVolume = 0;
       for (int i = 0; i < steps; i++) {
         await Future.delayed(intervalDuration);
-        currentVolume =
-            (currentVolume + volumeIncrement).clamp(0.0, _musicVolume);
+        currentVolume = (currentVolume + volumeIncrement).clamp(0.0, _musicVolume);
         _musicPlayer.setVolume(currentVolume);
       }
 
@@ -93,8 +91,7 @@ class SoundController {
     // Gradually decrease volume
     final currentVolume = _musicPlayer.volume;
     const intervalDuration = Duration(milliseconds: 50);
-    final steps =
-        fadeOutDuration.inMilliseconds ~/ intervalDuration.inMilliseconds;
+    final steps = fadeOutDuration.inMilliseconds ~/ intervalDuration.inMilliseconds;
     final volumeDecrement = currentVolume / steps;
 
     double volume = currentVolume;
@@ -112,39 +109,56 @@ class SoundController {
   Future<void> pauseBackgroundMusic({
     Duration fadeOutDuration = const Duration(milliseconds: 500),
   }) async {
-    // Store current volume for resume
-    final currentVolume = _musicPlayer.volume;
+    if (!_musicPlayer.playing) return;
+    final savedVolume = _musicPlayer.volume;
 
-    // Fade out
-    await stopBackgroundMusic(fadeOutDuration: fadeOutDuration);
+    // fade out
+    const interval = Duration(milliseconds: 50);
+    final steps = fadeOutDuration.inMilliseconds ~/ interval.inMilliseconds;
+    final decrement = savedVolume / steps;
+    double v = savedVolume;
+    for (int i = 0; i < steps; i++) {
+      await Future.delayed(interval);
+      v = (v - decrement).clamp(0.0, savedVolume);
+      await _musicPlayer.setVolume(v);
+    }
+    await _musicPlayer.setVolume(0);
+    // *true* pause here, not stop
+    await _musicPlayer.pause();
 
-    // Store the volume we'll need when resuming
-    _musicVolume = currentVolume;
+    // remember for fade‑in later
+    _musicVolume = savedVolume;
+  }
+
+  Future<void> resumeBackgroundMusicIfPaused({
+    Duration fadeInDuration = const Duration(milliseconds: 500),
+  }) async {
+    if (_musicPlayer.playing) return;
+
+    // Resume music with fade-in
+    await resumeBackgroundMusic(fadeInDuration: fadeInDuration);
   }
 
   Future<void> resumeBackgroundMusic({
     Duration fadeInDuration = const Duration(milliseconds: 500),
   }) async {
-    if (!_isMuted) {
-      await _musicPlayer.play();
+    if (_isMuted || _musicPlayer.playing) return;
 
-      // Gradually increase volume back to stored level
-      const intervalDuration = Duration(milliseconds: 50);
-      final steps =
-          fadeInDuration.inMilliseconds ~/ intervalDuration.inMilliseconds;
-      final volumeIncrement = _musicVolume / steps;
+    // ensure we start silent
+    await _musicPlayer.setVolume(0);
+    await _musicPlayer.play();
 
-      double currentVolume = 0;
-      for (int i = 0; i < steps; i++) {
-        await Future.delayed(intervalDuration);
-        currentVolume =
-            (currentVolume + volumeIncrement).clamp(0.0, _musicVolume);
-        _musicPlayer.setVolume(currentVolume);
-      }
-
-      // Ensure we reach the target volume
-      _musicPlayer.setVolume(_musicVolume);
+    // fade back in
+    const interval = Duration(milliseconds: 50);
+    final steps = fadeInDuration.inMilliseconds ~/ interval.inMilliseconds;
+    final increment = _musicVolume / steps;
+    double v = 0;
+    for (int i = 0; i < steps; i++) {
+      await Future.delayed(interval);
+      v = (v + increment).clamp(0.0, _musicVolume);
+      await _musicPlayer.setVolume(v);
     }
+    await _musicPlayer.setVolume(_musicVolume);
   }
 
   // Sound effect methods

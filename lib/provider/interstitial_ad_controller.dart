@@ -5,12 +5,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/sound_controller.dart';
+
 class InterstitialAdController extends StateNotifier<bool> {
   InterstitialAd? _interstitialAd;
   bool _isAdLoaded = false;
   bool _isAdLoading = false;
+  final Ref _ref;
 
-  InterstitialAdController() : super(false) {
+  InterstitialAdController(this._ref) : super(false) {
     loadAd();
   }
 
@@ -63,6 +66,7 @@ class InterstitialAdController extends StateNotifier<bool> {
 
   Future<void> showAdIfLoaded(VoidCallback onAdDismissed) async {
     if (_isAdLoaded && _interstitialAd != null) {
+      // SoundController().pauseBackgroundMusic();
       _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
         onAdDismissedFullScreenContent: (ad) {
           ad.dispose();
@@ -70,6 +74,7 @@ class InterstitialAdController extends StateNotifier<bool> {
           state = false;
           loadAd(); // Load the next ad
           onAdDismissed();
+          SoundController().resumeBackgroundMusicIfPaused();
         },
         onAdFailedToShowFullScreenContent: (ad, error) {
           debugPrint('Failed to show interstitial ad: ${error.message}');
@@ -78,6 +83,7 @@ class InterstitialAdController extends StateNotifier<bool> {
           state = false;
           loadAd(); // Load the next ad
           onAdDismissed();
+          SoundController().resumeBackgroundMusicIfPaused();
         },
         onAdShowedFullScreenContent: (ad) {
           debugPrint('Interstitial ad showed full screen content');
@@ -103,5 +109,5 @@ class InterstitialAdController extends StateNotifier<bool> {
 }
 
 final interstitialAdProvider = StateNotifierProvider<InterstitialAdController, bool>((ref) {
-  return InterstitialAdController();
+  return InterstitialAdController(ref);
 });

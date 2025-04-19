@@ -6,10 +6,12 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdBanner extends StatefulWidget {
   final double height;
+  final VoidCallback? onAdLoaded;
 
   const AdBanner({
     super.key,
     this.height = 50,
+    this.onAdLoaded,
   });
 
   @override
@@ -59,6 +61,7 @@ class _AdBannerState extends State<AdBanner> {
           setState(() {
             _isAdLoaded = true;
           });
+          widget.onAdLoaded?.call();
         },
         onAdFailedToLoad: (ad, error) {
           ad.dispose();

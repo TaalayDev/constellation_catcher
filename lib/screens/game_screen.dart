@@ -273,14 +273,12 @@ class _GameScreenState extends ConsumerState<GameScreen> with TickerProviderStat
     setState(() {
       _isPaused = true;
     });
-    SoundController().pauseBackgroundMusic();
   }
 
   void _resumeGame() {
     setState(() {
       _isPaused = false;
     });
-    SoundController().resumeBackgroundMusic();
   }
 
   // Power-up implementations
@@ -1269,7 +1267,6 @@ class _GameScreenState extends ConsumerState<GameScreen> with TickerProviderStat
 
   void _validatePattern() {
     if (_playerConnections.isEmpty) return;
-    print('${_playerConnections}');
 
     setState(() {
       _isValidating = true;
